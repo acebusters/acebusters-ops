@@ -1,0 +1,21 @@
+{
+  "name": "acebusters-ops",
+  "version": "1.0.0",
+  "description": "DevOps scripts and goodies for Acebusters project",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "aws s3 sync --exclude '.git/*' . s3://status.acebusters.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acebusters/ops.git"
+  },
+  "author": "Kosta Korenkov <kosta@whoot.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acebusters/ops/issues"
+  },
+  "homepage": "https://github.com/acebusters/ops#readme",
+  "dependencies": {
+  }
+}

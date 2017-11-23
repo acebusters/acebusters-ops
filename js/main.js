@@ -29,7 +29,9 @@ $(function () {
     let blockBehind;
     try {
       blockBehind = parseInt(healthcheckResp);
-    } catch (e) {
+    } catch (e) {}
+
+    if (isNaN(blockBehind)) {
       return badge({ style: 'danger', text: 'Problem', message: healthcheckResp });
     }
     if (blockBehind === 0) {
@@ -49,10 +51,17 @@ $(function () {
   $('#geth-node-status-list').append(NODES.map(listEntry));
 
   NODES.forEach(node => {
+    const nodeStatusBadge = $(`li[data-address="${node.address}"]`).find('.badge:first');
     $.get(`http://${node.address}:50336`).then(res => {
       console.log(`Node ${node.address}: ${res}`);
-      const nodeStatusBadge = $(`li[data-address="${node.address}"]`).find('.badge:first');
       nodeStatusBadge.replaceWith(getBadge(res));
+    }).catch((res, err) => {
+      console.log(`Node ${node.address}: ${err}`);
+      if (res.responseText) {
+        return nodeStatusBadge.replaceWith(getBadge(res.responseText));
+      }
+      if (err == 'error') return;
+      nodeStatusBadge.replaceWith(badge({ style: 'danger', text: 'Unavailable', message: err }));
     });
   });
 

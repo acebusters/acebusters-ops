@@ -1,20 +1,8 @@
 
 const NODES = [
   {
-    description: 'Mainnet read node 1',
-    address:     'ec2-54-171-37-6.eu-west-1.compute.amazonaws.com'
-  },
-  {
-    description: 'Mainnet read node 2',
-    address:     'ec2-54-229-180-11.eu-west-1.compute.amazonaws.com'
-  },
-  {
-    description: 'Mainnet write node',
-    address:     'ec2-54-229-226-81.eu-west-1.compute.amazonaws.com'
-  },
-  {
     description: 'Rinkeby read node',
-    address:     'ec2-54-171-251-232.eu-west-1.compute.amazonaws.com'
+    address:     'ec2-34-241-0-109.eu-west-1.compute.amazonaws.com'
   },
   {
     description: 'Rinkeby write node',
